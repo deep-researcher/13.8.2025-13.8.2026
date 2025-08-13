@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Videos</title>
+  <style>
+    body {
+      background-color: #090909;
+    }
+
+    .video-box {
+      display: flex;
+      align-items: center;
+    }
+
+    .video-box video {
+      box-sizing: border-box;
+      padding: 8px;
+      margin: 0 auto;
+      max-height: 100vh;
+      max-width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="videos">
+    <div class="video-box">
+      <video preload="none" poster="vert1.png" autoplay muted loop playsinline>
+        <source src="vert1.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="video-box">
+      <video preload="none" poster="vert2.png" autoplay muted loop playsinline>
+        <source src="vert2.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="video-box">
+      <video preload="none" poster="vert1.png" autoplay muted loop playsinline>
+        <source src="vert1.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="video-box">
+      <video preload="none" poster="vert2.png" autoplay muted loop playsinline>
+        <source src="vert2.mp4" type="video/mp4">
+      </video>
+    </div>
+  </section>
+</body>
+
+</html>
+
+<!-- https://stackoverflow.com/questions/75340067/tiktok-like-scrolling-with-css -->

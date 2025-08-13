@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protected Content</title>
+    <!-- Use Tailwind CSS for a modern, responsive design -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /*
+         * This style block is used to toggle the visibility of the login
+         * and protected content sections. We use JavaScript to add or
+         * remove these classes.
+         */
+        .hidden {
+            display: none;
+        }
+
+        /* Use Inter font for a clean look */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 min-h-screen flex items-center justify-center p-4">
+
+    <!-- The main container for the application -->
+    <div class="w-full max-w-2xl bg-white shadow-xl rounded-2xl p-8 md:p-12">
+
+        <!-- Login Form Container -->
+        <div id="login-container" class="transition-opacity duration-500">
+            <h1 class="text-3xl font-bold text-center mb-6 text-slate-800">Please Log In</h1>
+            <p class="text-center text-slate-600 mb-8">
+                Enter your credentials to access the protected content.
+                <br>
+                <span class="text-sm italic">Hint: User 'admin', Pass 'password123'</span>
+            </p>
+
+            <form id="login-form" class="space-y-6">
+                <div>
+                    <label for="username" class="block text-sm font-medium text-slate-700">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username"
+                           class="mt-1 block w-full px-4 py-2 border border-slate-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-colors duration-200">
+                </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium text-slate-700">Password</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••"
+                           class="mt-1 block w-full px-4 py-2 border border-slate-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-colors duration-200">
+                </div>
+                <div id="error-message" class="text-red-500 text-sm text-center hidden">
+                    Incorrect username or password. Please try again.
+                </div>
+                <div>
+                    <button type="submit"
+                            class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
+                        Log In
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Protected Content Container -->
+        <div id="content-container" class="transition-opacity duration-500 hidden">
+            <h1 class="text-3xl font-bold text-center mb-6 text-green-700">Welcome, You're Logged In!</h1>
+            <p class="text-center text-slate-600 mb-8">
+                This is the content you can only see after a successful login.
+                This could be your dashboard, personal profile, or any other protected information.
+            </p>
+            <div class="prose max-w-none mx-auto mb-8 p-6 bg-slate-50 rounded-lg border border-slate-200">
+                <h2 class="text-xl font-semibold text-slate-800">Important Information</h2>
+                <p>
+                    Here is some important content. For a real application, you would fetch this from
+                    a database or API after the user has been authenticated on a server.
+                </p>
+                <ul>
+                    <li>Feature 1: View your latest activity.</li>
+                    <li>Feature 2: Update your personal settings.</li>
+                    <li>Feature 3: Access exclusive content.</li>
+                </ul>
+            </div>
+            <div class="flex justify-center">
+                <button id="logout-button"
+                        class="w-full md:w-auto flex justify-center py-3 px-6 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors duration-200">
+                    Log Out
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Get references to all necessary DOM elements
+        const loginContainer = document.getElementById('login-container');
+        const contentContainer = document.getElementById('content-container');
+        const loginForm = document.getElementById('login-form');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const errorMessage = document.getElementById('error-message');
+        const logoutButton = document.getElementById('logout-button');
+
+        // Hardcoded credentials for demonstration purposes.
+        // In a real application, NEVER store credentials like this.
+        // You would send the username and password to a server to be verified.
+        const correctUsername = 'admin';
+        const correctPassword = 'password123';
+
+        /**
+         * Checks if the user is logged in based on a flag in localStorage.
+         * Toggles the visibility of the login form and protected content.
+         */
+        function checkLoginState() {
+            const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
+
+            if (isLoggedIn) {
+                // If logged in, hide the login form and show the content
+                loginContainer.classList.add('hidden');
+                contentContainer.classList.remove('hidden');
+            } else {
+                // If not logged in, show the login form and hide the content
+                loginContainer.classList.remove('hidden');
+                contentContainer.classList.add('hidden');
+            }
+        }
+
+        /**
+         * Handles the login form submission.
+         * @param {Event} event The form submission event.
+         */
+        loginForm.addEventListener('submit', (event) => {
+            // Prevent the default form submission behavior (page reload)
+            event.preventDefault();
+
+            // Get the values from the input fields
+            const username = usernameInput.value;
+            const password = passwordInput.value;
+
+            // Check if credentials are correct
+            if (username === correctUsername && password === correctPassword) {
+                // Store a flag in localStorage to remember the login state
+                // Note: For a real application, this is not secure.
+                // It should be a secure token from a server.
+                localStorage.setItem('loggedIn', 'true');
+                errorMessage.classList.add('hidden');
+                checkLoginState();
+            } else {
+                // Show an error message if credentials are wrong
+                errorMessage.classList.remove('hidden');
+            }
+        });
+
+        /**
+         * Handles the logout button click.
+         */
+        logoutButton.addEventListener('click', () => {
+            // Remove the login flag from localStorage
+            localStorage.removeItem('loggedIn');
+            // Clear the input fields for a fresh login
+            usernameInput.value = '';
+            passwordInput.value = '';
+            // Update the UI
+            checkLoginState();
+        });
+
+        // Initial check when the page loads to set the correct view
+        window.addEventListener('load', checkLoginState);
+    </script>
+</body>
+</html>

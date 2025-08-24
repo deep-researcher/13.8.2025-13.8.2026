@@ -1,0 +1,133 @@
+/* _______________________________________________________________________________________________________ */
+/* HELLO THERE! ;) */
+/* TERE TULEMAST ;) */
+
+
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  min-height: 100vh;
+  background: url('MATRIX.JPG');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+/* _______________________________________________________________________________________________________ */
+.video-container {
+  display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 10vh;
+      padding: 35px 25px 25px;
+}
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 1; /* Lower z-index than navigation */
+}
+
+video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #9a020200;
+    z-index: 1; /* Lower z-index than navigation */
+}
+/* _______________________________________________________________________________________________________ */
+nav{
+  position: relative;
+  z-index: 100; /* Higher z-index than video */
+  background: linear-gradient(180deg, #000000 0%, #0000001f 100%); /* Diagonal gradient */
+  box-shadow: 3px 3px 5px rgba(102, 0, 255, 0);
+}
+nav ul{
+  width: 100%;
+  font-weight: bold;
+  font-family: BodoniFLF-Bold;
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+nav li{
+  height: 50px;
+}
+/* _______________________________________________________________________________________________________ */
+/* NAV BAR FONT */
+nav a{
+  height: 100%;
+  padding: 0 20px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: rgb(255, 0, 0);
+}
+
+/* _______________________________________________________________________________________________________ */
+/* HOVER OVER WITH MOUSE = COLOR */
+nav a:hover{
+  background-color: #0000007b;
+  border-radius: 40;
+}
+nav li:first-child{
+  color: #ff00e6;
+  margin-right: auto;
+}
+/* _______________________________________________________________________________________________________ */
+.sidebar{
+  position: fixed;
+  top: 0; 
+  right: 0;
+  height: 100vh;
+  width: 250px;
+  background-color: rgb(0, 0, 0);
+  background: radial-gradient(circle, transparent 5%, rgba(255, 0, 0, 0.3) 100%);
+  backdrop-filter: blur(12px);
+  box-shadow: inset 0 0 100px rgba(0,0,0,0.5);
+  list-style: none;
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  z-index: 1000; /* Highest z-index to ensure it appears above everything */
+}
+/* _______________________________________________________________________________________________________ */
+/* DUNNO */
+
+.sidebar li{
+  color: #0508ed;
+  width: 100%;
+}
+/* _______________________________________________________________________________________________________ */
+/* SIDEBAR TEXT FONT MOBILE */
+.sidebar a{
+  color: #ffffff6b;
+  width: 100%;
+}
+/* _______________________________________________________________________________________________________ */
+
+.menu-button{
+  display: none;
+}
+@media(max-width: 800px){
+  .hideOnMobile{
+    display: none;
+  }
+  .menu-button{
+    display: block;
+  }
+}
+@media(max-width: 400px){
+  .sidebar{
+    width: 100%;
+  }
+}
+/* _______________________________________________________________________________________________________ */

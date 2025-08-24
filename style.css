@@ -7,9 +7,49 @@
   margin: 0;
   padding: 0;
 }
-body{
+body.MAIN-PAGE{
   min-height: 100vh;
   background: url('MATRIX.JPG');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body.FM-PAGE{
+  min-height: 100vh;
+  background: url('FM.JPG');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body.HS-PAGE{
+  min-height: 100vh;
+  background: url('HS.JPG');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body.NDOD-PAGE{
+  min-height: 100vh;
+  background: url('NDOD.JPG');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body.TPIMD-PAGE{
+  min-height: 100vh;
+  background: url('TPIMD.JPG');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body.TWIAF-PAGE{
+  min-height: 100vh;
+  background: url('TWIAF.JPG');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
